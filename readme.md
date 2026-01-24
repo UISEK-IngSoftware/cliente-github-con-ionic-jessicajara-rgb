@@ -5,7 +5,7 @@
 
 - **Nombre:** Jessica Viviana Jara Avila
 - **Carrera:** Ing Software
-- **Fecha de inicio:** 23 enero 2025
+- **Fecha de inicio:** 4 diciembre 2025
 
 ---
 

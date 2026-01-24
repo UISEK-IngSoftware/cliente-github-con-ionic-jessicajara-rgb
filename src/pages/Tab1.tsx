@@ -1,8 +1,26 @@
-import { IonContent, IonHeader, IonList, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonList, IonPage, IonTitle, IonToolbar, useIonViewDidEnter } from '@ionic/react';
 import RepoItem from '../components/RepoItem';
 import './Tab1.css';
+import { RepositoryItem } from '../interfaces/RepositoryItems';
+import { fetchRepositories } from '../services/GithubServices';
+import React from 'react';
 
 const Tab1: React.FC = () => {
+
+  const [repos, setRepos] = React.useState<RepositoryItem[]>([]);
+
+  const loadRepos = async () => {
+    const reposData = await fetchRepositories();
+    setRepos(reposData);
+  }
+
+  useIonViewDidEnter(() => {
+    console.log("******** Cargando repositorios ********");
+    loadRepos();
+  }
+
+  )
+
   return (
     <IonPage>
       <IonHeader>
@@ -16,14 +34,14 @@ const Tab1: React.FC = () => {
             <IonTitle size="large">Repositorios</IonTitle>
           </IonToolbar>
         </IonHeader>
+
         <IonList>
-          <RepoItem name="android-repo" imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt1eK7_IbFs4d5WbAYMoMITH3A2wy_9XgLAw&s" />
-          <RepoItem name="ios-repo" imageUrl="https://www.freeiconspng.com/thumbs/ios-png/os7-style-metro-ui-icon-19.png" />
-          <RepoItem name="ionic-repo" imageUrl="https://www.pikpng.com/pngl/m/381-3810329_ionic-framework-icon-clipart.png" />
+          {repos.map((repo, index) => (
+            <RepoItem key={index} repo= {repo} />
+          ))}
         </IonList>
       </IonContent>
     </IonPage>
   );
 };
-
 export default Tab1;
