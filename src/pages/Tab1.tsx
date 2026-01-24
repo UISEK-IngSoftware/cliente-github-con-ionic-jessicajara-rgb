@@ -37,7 +37,7 @@ const Tab1: React.FC = () => {
 
         <IonList>
           {repos.map((repo, index) => (
-            <RepoItem key={index} repo= {repo} />
+            <RepoItem key={index} repo={repo} />
           ))}
         </IonList>
       </IonContent>
