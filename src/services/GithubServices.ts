@@ -3,7 +3,7 @@ import { RepositoryItem } from "../interfaces/RepositoryItems";
 import { UserInfo } from "../interfaces/UserInfo";
 
 const GITHUB_API_URL = "https://api.github.com";
-const GITHUB_API_TOKEN = "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"; //Reemplazar por token valida
+const GITHUB_API_TOKEN = "ghp_0XXXXXXXXXXXXXXXXXXXXXXXX"; //Reemplazar por token valida
 
 /**
  * 
